@@ -1,0 +1,27 @@
+<div class = 'row m-0 w-100'>
+    <div class = 'col-md-4 offset-4 mt-5' *ngIf = '!this.isLogin'>
+    <h4>Login</h4>
+    <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
+    <div class = 'form-group'>
+    <input class = 'form-control' type = "text" name = "email" placeholder = "Email" [(ngModel)]="email">
+    </div>
+<p *ngIf="email=='' else nameExist">the usere name empty</p>
+<div class = 'form-group'>
+    <input class = 'form-control' type = "password" name = "password" placeholder = "Password" ngModel>
+</div>
+<input class= 'btn btn-outline-info' type = "submit" value = "Login">
+</form> 
+<div>
+    if you are hav <a href="/user/register"> register</a>
+</div> 
+</div>
+
+<div class = 'col-md-4 offset-4 mt-5' *ngIf = 'this.isLogin'>
+    <h1>You are logged in</h1>
+    <button class = 'btn btn-outline-info' (click) = 'logout()'>Log-out</button>
+</div>
+</div>
+<ng-template #nameExist>
+    <p>name exist id {{ email }}</p>
+  </ng-template>
+ 
